@@ -1,6 +1,24 @@
-import { printLine } from './modules/print';
+/**
+ * injectScript - Inject internal script to available access to the `window`
+ *
+ * @param  {type} file_path Local path of the internal script.
+ * @param  {type} tag The tag as string, where the script will be append (default: 'body').
+ * @see    {@link http://stackoverflow.com/questions/20499994/access-window-variable-from-content-script}
+ */
 
-console.log('Content script works!');
-console.log('Must reload extension for modifications to take effect.');
+function injectScript(file_path, tag) {
+  let div = document.createElement('div');
+  div.id = 'shopify-url-generator';
 
-printLine("Using the 'printLine' function from the Print Module");
+  document.body.appendChild(div);
+
+  var node = document.getElementsByTagName(tag)[0];
+  var script = document.createElement('script');
+  script.setAttribute('type', 'text/javascript');
+  script.setAttribute('src', file_path);
+  node.appendChild(script);
+}
+
+if (window.location.host.includes('.myshopify.com')) {
+  injectScript(chrome.runtime.getURL('widget.bundle.js'), 'body');
+}
