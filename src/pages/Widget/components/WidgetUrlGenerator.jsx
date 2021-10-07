@@ -7,17 +7,25 @@ const WidgetUrlGenerator = () => {
   const [urlGenerated, setUrlGenerated] = useState(false);
 
   const generatePreviewUrl = (shopifyObject) => {
+    const location = window.location;
     const href = window.location.href;
     const search = window.location.search;
-    let previewQuery = '';
+    let url = '';
 
-    if (search) {
-      previewQuery = '&preview_theme_id=';
+    console.log(window.location);
+    console.log(search);
+
+    if (search && !search.includes('key')) {
+      url = href + '&preview_theme_id=';
+    } else if (search.includes('key')) {
+      url = location.origin + location.pathname + '?preview_theme_id=';
     } else {
-      previewQuery = '?preview_theme_id=';
+      url = href + '?preview_theme_id=';
     }
 
-    navigator.clipboard.writeText(href + previewQuery + shopifyObject.theme.id);
+    navigator.clipboard.writeText(url + shopifyObject.theme.id);
+
+    console.log(url + shopifyObject.theme.id);
   };
 
   const onClickButtonHandler = () => {

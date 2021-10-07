@@ -3,6 +3,8 @@ import React from 'react';
 const defaultStore = {
   shopify: null,
   setShopify: () => {},
+  activeTab: 'generator',
+  setActiveTab: () => {},
 };
 
 const Store = React.createContext(defaultStore);

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Store from '../store/initialStore';
 import WidgetUrlGenerator from './WidgetUrlGenerator';
 
 const WidgetContent = () => {
+  const { activeTab } = useContext(Store);
   return (
     <div className="WidgetContent">
-      <WidgetUrlGenerator />
+      {activeTab === 'generator' && <WidgetUrlGenerator />}
     </div>
   );
 };

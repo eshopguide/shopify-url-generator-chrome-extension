@@ -1,6 +1,6 @@
 {
   "name": "shopify-url-generator",
-  "version": "4.0.1",
+  "version": "0.0.2",
   "description": "Create effortless Previewlinks for Shopify from the Frontend of your Browser",
   "license": "MIT",
   "repository": {
@@ -20,7 +20,8 @@
     "classnames": "^2.3.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-hot-loader": "^4.13.0"
+    "react-hot-loader": "^4.13.0",
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.17",

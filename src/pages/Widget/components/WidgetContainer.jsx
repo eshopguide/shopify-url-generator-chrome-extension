@@ -5,6 +5,8 @@ import WidgetFooter from './WidgetFooter';
 import WidgetHeader from './WidgetHeader';
 import cN from 'classnames';
 
+import { HiOutlineChevronLeft } from 'react-icons/hi';
+
 const WidgetContainer = () => {
   const { shopify, setShopify } = useContext(Store);
   const [openWidget, setOpenWidget] = useState(false);
@@ -25,7 +27,9 @@ const WidgetContainer = () => {
           onClick={() => setOpenWidget(!openWidget)}
           className="WidgetContainer__Opener"
         >
-          <div className="WidgetContainer__Arrow">{'<'}</div>
+          <div className="WidgetContainer__Arrow">
+            <HiOutlineChevronLeft />
+          </div>
         </div>
         <div className="WidgetContainer__Wrapper">
           <WidgetHeader />

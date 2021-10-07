@@ -24,11 +24,14 @@
 }
 
 .WidgetContainer__Arrow {
+  position: relative;
   transition: 0.2s ease-in-out;
+  left: 0;
 }
 
 .WidgetContainer--Open .WidgetContainer__Arrow {
   transform: rotate(180deg);
+  left: 2px;
 }
 
 .WidgetContainer__Wrapper {
@@ -47,22 +50,22 @@
   display: flex;
   align-items: center;
   position: absolute;
-  left: 0;
+  left: -10px;
   top: 50%;
   transform: translateY(-50%) translateX(-100%);
   background-color: #ee6c4d;
   color: #fff;
   padding: 10px;
   cursor: pointer;
-  font-size: 50px;
+  font-size: 1.8em;
   font-weight: 500;
   line-height: 25px;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-radius: 6px;
   height: 50px;
   width: 50px;
   overflow: hidden;
   transition: 0.2s ease-in-out;
+  transform-origin: center;
 }
 
 .WidgetContainer--Open .WidgetContainer__Opener {
@@ -72,7 +75,7 @@
 .WidgetHeader {
   display: grid;
   gap: 5px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   margin: 10px 10px 0 10px;
 }
 
@@ -86,6 +89,7 @@
   transition: 0.2s ease-in-out;
   cursor: pointer;
   border-radius: 3px;
+  font-size: 12px;
 }
 
 .WidgetHeader__tab.active,
@@ -190,4 +194,16 @@
   padding: 15px 10px;
   background-color: #3d5a80;
   font-size: 12px;
+}
+
+.WidgetFooter__Link {
+  color: #fff;
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
+  text-decoration: underline;
+}
+
+.WidgetFooter__Link:hover {
+  color: #ee6c4d;
+  text-decoration: underline;
 }
