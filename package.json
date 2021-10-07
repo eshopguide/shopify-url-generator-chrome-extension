@@ -1,7 +1,7 @@
 {
   "name": "shopify-url-generator",
   "version": "4.0.1",
-  "description": "A chrome extension boilerplate built with React 17 and Webpack 5",
+  "description": "Create effortless Previewlinks for Shopify from the Frontend of your Browser",
   "license": "MIT",
   "repository": {
     "type": "git",

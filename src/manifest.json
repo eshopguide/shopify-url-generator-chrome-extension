@@ -1,8 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "shopify-url-generator",
+  "name": "The Shopify Previewlink Generator",
   "options_page": "options.html",
-  "background": { "service_worker": "background.bundle.js" },
   "icons": {
     "128": "icon-128.png"
   },
@@ -14,11 +13,11 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["widget.bundle.js", "pickachu.gif"],
+      "resources": ["widget.bundle.js"],
       "matches": ["https://*.myshopify.com/*"]
     },
     {
-      "resources": ["icon-128.png", "icon-34.png"],
+      "resources": ["icon-128.png"],
       "matches": []
     }
   ]

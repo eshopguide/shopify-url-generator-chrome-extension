@@ -38,11 +38,10 @@ var options = {
   entry: {
     options: path.join(__dirname, 'src', 'pages', 'Options', 'index.jsx'),
     widget: path.join(__dirname, 'src', 'pages', 'Widget', 'index.jsx'),
-    background: path.join(__dirname, 'src', 'pages', 'Background', 'index.js'),
     contentScript: path.join(__dirname, 'src', 'pages', 'Content', 'index.js'),
   },
   chromeExtensionBoilerplate: {
-    notHotReload: ['contentScript', 'devtools'],
+    notHotReload: ['contentScript'],
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -136,15 +135,6 @@ var options = {
       patterns: [
         {
           from: 'src/assets/img/icon-128.png',
-          to: path.join(__dirname, 'build'),
-          force: true,
-        },
-      ],
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: 'src/assets/img/icon-34.png',
           to: path.join(__dirname, 'build'),
           force: true,
         },
