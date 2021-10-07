@@ -34,41 +34,39 @@ const WidgetUrlGenerator = () => {
         'WidgetUrlGenerator--success': urlGenerated,
       })}
     >
-      {shopify && (
-        <>
-          <div className="WidgetUrlGenerator__Action">
-            <div className="WidgetUrlGenerator__Image-Container">
-              <img
-                src="https://i.postimg.cc/RCHpzJ7y/pickachu.gif"
-                width="120"
-                height="auto"
-              />
-            </div>
-            <div className="WidgetUrlGenerator__Headline">
-              We're ready, how about you?
-            </div>
-            <div
-              onClick={() => onClickButtonHandler()}
-              className="WidgetUrlGenerator__Button"
-            >
-              Get The Preview Link
+      <>
+        <div className="WidgetUrlGenerator__Action">
+          <div className="WidgetUrlGenerator__Image-Container">
+            <img
+              src="https://i.postimg.cc/RCHpzJ7y/pickachu.gif"
+              width="120"
+              height="auto"
+            />
+          </div>
+          <div className="WidgetUrlGenerator__Headline">
+            We're ready, how about you?
+          </div>
+          <div
+            onClick={() => onClickButtonHandler()}
+            className="WidgetUrlGenerator__Button"
+          >
+            Get The Preview Link
+          </div>
+        </div>
+        <div className="WidgetUrlGenerator__Response">
+          <div className="WidgetUrlGenerator__Headline">
+            <div>
+              Preview Link for {shopify.theme.name} copied to your clipboard.
             </div>
           </div>
-          <div className="WidgetUrlGenerator__Response">
-            <div className="WidgetUrlGenerator__Headline">
-              <div>
-                Preview Link for {shopify.theme.name} copied to your clipboard.
-              </div>
-            </div>
-            <div
-              onClick={() => setUrlGenerated(false)}
-              className="WidgetUrlGenerator__Button"
-            >
-              New Preview Link
-            </div>
+          <div
+            onClick={() => setUrlGenerated(false)}
+            className="WidgetUrlGenerator__Button"
+          >
+            New Preview Link
           </div>
-        </>
-      )}
+        </div>
+      </>
     </div>
   );
 };
