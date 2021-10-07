@@ -22,7 +22,6 @@ const WidgetUrlGenerator = () => {
 
   const onClickButtonHandler = () => {
     if (shopify) {
-      console.log(shopify);
       generatePreviewUrl(shopify);
       setUrlGenerated(true);
     }

@@ -7,9 +7,7 @@ import WidgetContainer from './components/WidgetContainer';
 const Widget = () => {
   const StoreData = useStore();
 
-  useEffect(() => {
-    console.log(StoreData);
-  }, [StoreData]);
+  useEffect(() => {}, [StoreData]);
 
   return (
     <Store.Provider value={StoreData}>
