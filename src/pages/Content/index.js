@@ -19,6 +19,4 @@ function injectScript(file_path, tag) {
   node.appendChild(script);
 }
 
-if (window.location.host.includes('.myshopify.com')) {
-  injectScript(chrome.runtime.getURL('widget.bundle.js'), 'body');
-}
+injectScript(chrome.runtime.getURL('widget.bundle.js'), 'body');
