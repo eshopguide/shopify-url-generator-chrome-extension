@@ -13,13 +13,10 @@ const WidgetContainer = () => {
   const { setActiveTab, settings } = useContext(Store);
 
   useEffect(() => {
-    console.log('test');
     window.addEventListener('storage', (e) => {
       const storeDataObject = JSON.parse(
         localStorage.getItem('storeDataObject')
       );
-
-      console.log(storeDataObject);
 
       setActiveTab(storeDataObject.activeTab);
       settings.setDisablePreviewbar(storeDataObject.settings.disablePreviewbar);
