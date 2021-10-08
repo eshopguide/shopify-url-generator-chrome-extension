@@ -3,7 +3,7 @@ import Store from '../store/initialStore';
 import cN from 'classnames';
 
 const WidgetUrlGenerator = () => {
-  const { shopify } = useContext(Store);
+  const { shopify, settings } = useContext(Store);
   const [urlGenerated, setUrlGenerated] = useState(false);
 
   const generatePreviewUrl = (shopifyObject) => {
@@ -11,9 +11,8 @@ const WidgetUrlGenerator = () => {
     const href = window.location.href;
     const search = window.location.search;
     let url = '';
-
-    console.log(window.location);
-    console.log(search);
+    let disablePreviewbar = '&pb=0';
+    let generatedUrl = '';
 
     if (search && !search.includes('key')) {
       url = href + '&preview_theme_id=';
@@ -23,9 +22,13 @@ const WidgetUrlGenerator = () => {
       url = href + '?preview_theme_id=';
     }
 
-    navigator.clipboard.writeText(url + shopifyObject.theme.id);
-
-    console.log(url + shopifyObject.theme.id);
+    if (settings.disablePreviewbar) {
+      generatedUrl = url + shopifyObject.theme.id + disablePreviewbar;
+      navigator.clipboard.writeText(generatedUrl);
+    } else {
+      generatedUrl = url + shopifyObject.theme.id;
+      navigator.clipboard.writeText(generatedUrl);
+    }
   };
 
   const onClickButtonHandler = () => {

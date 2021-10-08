@@ -23,7 +23,7 @@ const WidgetHeader = () => {
         <div className="Tab__Content">History</div>
       </div>
       <div
-        className={cN('WidgetHeader__tab WidgetHeader__Disabled', {
+        className={cN('WidgetHeader__tab', {
           active: activeTab === 'settings',
         })}
         onClick={() => setActiveTab('settings')}
