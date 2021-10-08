@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react';
-import Store from '../store/initialStore';
+import React, { useState } from 'react';
 import cN from 'classnames';
 
 const WidgetUrlGenerator = () => {
-  const { shopify, settings } = useContext(Store);
+  const shopify = window.Shopify;
   const [urlGenerated, setUrlGenerated] = useState(false);
 
   const generatePreviewUrl = (shopifyObject) => {

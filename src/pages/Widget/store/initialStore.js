@@ -1,8 +1,6 @@
 import React from 'react';
 
 const defaultStore = {
-  shopify: null,
-  setShopify: () => {},
   activeTab: 'generator',
   setActiveTab: () => {},
   settings: {

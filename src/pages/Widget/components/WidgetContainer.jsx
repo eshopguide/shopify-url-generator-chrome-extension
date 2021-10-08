@@ -1,18 +1,29 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Store from '../store/initialStore';
+import React, { useContext, useState, useEffect } from 'react';
 import WidgetContent from './WidgetContent';
 import WidgetFooter from './WidgetFooter';
 import WidgetHeader from './WidgetHeader';
 import cN from 'classnames';
 
 import { HiOutlineChevronLeft } from 'react-icons/hi';
+import Store from '../store/initialStore';
 
 const WidgetContainer = () => {
-  const { shopify, setShopify } = useContext(Store);
+  const shopify = window.Shopify;
   const [openWidget, setOpenWidget] = useState(false);
+  const { setActiveTab, settings } = useContext(Store);
 
   useEffect(() => {
-    setShopify(window.Shopify);
+    console.log('test');
+    window.addEventListener('storage', (e) => {
+      const storeDataObject = JSON.parse(
+        localStorage.getItem('storeDataObject')
+      );
+
+      console.log(storeDataObject);
+
+      setActiveTab(storeDataObject.activeTab);
+      settings.setDisablePreviewbar(storeDataObject.settings.disablePreviewbar);
+    });
   }, []);
 
   return (

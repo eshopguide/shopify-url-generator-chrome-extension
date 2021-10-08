@@ -1,9 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Store from '../store/initialStore';
 import cN from 'classnames';
+import updateLocalStorage from '../hooks/updateLocalStorage';
 
 const WidgetSettings = () => {
+  const contextValue = useContext(Store);
   const { settings } = useContext(Store);
+
+  const onClickHandler = () => {
+    settings.setDisablePreviewbar(!settings.disablePreviewbar);
+  };
+
+  useEffect(() => {
+    updateLocalStorage(contextValue);
+  }, [settings]);
 
   return (
     <div className={cN('WidgetSettings')}>
@@ -11,9 +21,7 @@ const WidgetSettings = () => {
         <div className="WidgetSettings__Headline">Preview Settings</div>
         <ul className="WidgetSettings__List">
           <li
-            onClick={() =>
-              settings.setDisablePreviewbar(!settings.disablePreviewbar)
-            }
+            onClick={() => onClickHandler(contextValue)}
             className="WidgetSettings__Listitem WidgetSettings__Checkbox"
           >
             <input

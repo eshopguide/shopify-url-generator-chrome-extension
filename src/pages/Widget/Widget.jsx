@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import useStore from './store/useStore';
 import Store from './store/initialStore';
 
 import WidgetContainer from './components/WidgetContainer';
 
 const Widget = () => {
-  const StoreData = useStore();
-
-  useEffect(() => {}, [StoreData]);
+  let StoreData = useStore();
 
   return (
     <Store.Provider value={StoreData}>

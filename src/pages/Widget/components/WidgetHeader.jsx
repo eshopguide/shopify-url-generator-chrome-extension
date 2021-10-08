@@ -1,9 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Store from '../store/initialStore';
 import cN from 'classnames';
+import updateLocalStorage from '../hooks/updateLocalStorage';
 
 const WidgetHeader = () => {
+  const contextValue = useContext(Store);
   const { activeTab, setActiveTab } = useContext(Store);
+
+  useEffect(() => {
+    updateLocalStorage(contextValue);
+  }, [activeTab]);
+
   return (
     <div className="WidgetHeader">
       <div
