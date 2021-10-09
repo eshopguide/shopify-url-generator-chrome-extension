@@ -6,22 +6,36 @@ import cN from 'classnames';
 
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 import Store from '../store/initialStore';
+import setLocalStorage from '../hooks/setLocalStorage';
 
 const WidgetContainer = () => {
   const shopify = window.Shopify;
+  const storeValue = useContext(Store);
   const [openWidget, setOpenWidget] = useState(false);
-  const { setActiveTab, settings } = useContext(Store);
+  const { activeTab, setActiveTab, settings } = useContext(Store);
 
   useEffect(() => {
-    window.addEventListener('storage', (e) => {
+    function useCopyOfLocalstorage() {
       const storeDataObject = JSON.parse(
         localStorage.getItem('storeDataObject')
       );
 
       setActiveTab(storeDataObject.activeTab);
       settings.setDisablePreviewbar(storeDataObject.settings.disablePreviewbar);
+    }
+
+    if (localStorage.getItem('storeDataObject')) {
+      useCopyOfLocalstorage();
+    }
+
+    window.addEventListener('storage', (e) => {
+      useCopyOfLocalstorage();
     });
   }, []);
+
+  useEffect(() => {
+    setLocalStorage(storeValue);
+  }, [activeTab, settings]);
 
   return (
     shopify && (

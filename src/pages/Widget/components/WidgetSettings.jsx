@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Store from '../store/initialStore';
 import cN from 'classnames';
-import updateLocalStorage from '../hooks/updateLocalStorage';
 
 const WidgetSettings = () => {
   const contextValue = useContext(Store);
@@ -10,10 +9,6 @@ const WidgetSettings = () => {
   const onClickHandler = () => {
     settings.setDisablePreviewbar(!settings.disablePreviewbar);
   };
-
-  useEffect(() => {
-    updateLocalStorage(contextValue);
-  }, [settings]);
 
   return (
     <div className={cN('WidgetSettings')}>
