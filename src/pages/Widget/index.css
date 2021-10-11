@@ -81,7 +81,8 @@
 }
 
 .WidgetHeader__tab,
-.WidgetUrlGenerator__Button {
+.WidgetUrlGenerator__Button,
+.WidgetHistory__Button {
   text-align: center;
   padding: 10px;
   text-transform: uppercase;
@@ -111,7 +112,8 @@
 }
 
 .WidgetHeader__tab:hover,
-.WidgetUrlGenerator__Button:hover {
+.WidgetUrlGenerator__Button:hover,
+.WidgetHistory__Button:hover {
   background-color: #ee6c4d;
   border-color: #ee6c4d;
 }
@@ -192,7 +194,8 @@
   min-height: 120px;
 }
 
-.WidgetUrlGenerator__Button {
+.WidgetUrlGenerator__Button,
+.WidgetHistory__Button {
   margin-top: 30px;
   background-color: #ce5b3e;
 }
@@ -200,6 +203,113 @@
 .WidgetSettings__Headline {
   font-size: 20px;
   font-weight: 500;
+}
+
+.WidgetHistory__Search {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  border-radius: 3px;
+  padding: 8px;
+  border: 0px solid transparent;
+  margin-bottom: 10px;
+  background-color: #fff;
+  color: #293241;
+}
+
+.WidgetHistory__List {
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.WidgetHistory__Store {
+  padding-bottom: 10px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.WidgetHistory__DropdownHeader {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid #3d5a80;
+  transition: 0.2s ease-in-out;
+}
+
+.WidgetHistory__DropdownHeader:hover {
+  background-color: #ce5b3e;
+  border-bottom: 2px solid #ce5b3e;
+  cursor: pointer;
+}
+
+.WidgetHistory__ThemeKey {
+  padding-right: 15px;
+  font-size: 0.85em;
+}
+
+.WidgetHistory__Arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  transition: 0.4s ease-in-out;
+  transform: rotate(0deg);
+}
+
+.WidgetHistory__Dropdown.WidgetHistory__Dropdown--closed
+  .WidgetHistory__DropdownContent {
+  display: none;
+}
+
+.WidgetHistory__Dropdown.WidgetHistory__Dropdown--open .WidgetHistory__Arrow {
+  transform: rotate(180deg);
+}
+
+.WidgetHistory__Listitem {
+  padding: 10px;
+  border-bottom: 2px solid #3d5a80;
+}
+
+.WidgetHistory__Role,
+.WidgetHistory__Pathname,
+.WidgetHistory__Name {
+  font-size: 0.75em;
+}
+
+.WidgetHistory__Name {
+  font-weight: 500;
+}
+
+.WidgetHistory__Role {
+  margin-bottom: 5px;
+}
+
+.WidgetHistory__Pathname {
+  margin-bottom: 10px;
+}
+
+.WidgetHistory__ButtonContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.WidgetHistory__ButtonContainer .WidgetHistory__Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-top: 0;
+  padding: 5px;
+  font-size: 1.5em;
 }
 
 .WidgetSettings__List {

@@ -1,41 +1,17 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import WidgetContent from './WidgetContent';
 import WidgetFooter from './WidgetFooter';
 import WidgetHeader from './WidgetHeader';
 import cN from 'classnames';
 
 import { HiOutlineChevronLeft } from 'react-icons/hi';
-import Store from '../store/initialStore';
-import setLocalStorage from '../hooks/setLocalStorage';
+import getLocalstorage from '../hooks/getLocalstorage';
 
 const WidgetContainer = () => {
   const shopify = window.Shopify;
-  const storeValue = useContext(Store);
   const [openWidget, setOpenWidget] = useState(false);
-  const { activeTab, setActiveTab, settings } = useContext(Store);
 
-  useEffect(() => {
-    function useCopyOfLocalstorage() {
-      const storeDataObject = JSON.parse(
-        localStorage.getItem('storeDataObject')
-      );
-
-      setActiveTab(storeDataObject.activeTab);
-      settings.setDisablePreviewbar(storeDataObject.settings.disablePreviewbar);
-    }
-
-    if (localStorage.getItem('storeDataObject')) {
-      useCopyOfLocalstorage();
-    }
-
-    window.addEventListener('storage', (e) => {
-      useCopyOfLocalstorage();
-    });
-  }, []);
-
-  useEffect(() => {
-    setLocalStorage(storeValue);
-  }, [activeTab, settings]);
+  getLocalstorage();
 
   return (
     shopify && (

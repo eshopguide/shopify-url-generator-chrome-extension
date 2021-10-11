@@ -1,41 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import cN from 'classnames';
+import generatePreviewUrl from '../helper/generatePreviewUrl';
+import generateHistoryObject from '../helper/generateHistoryObject';
+import Store from '../store/initialStore';
 
 const WidgetUrlGenerator = () => {
   const shopify = window.Shopify;
   const [urlGenerated, setUrlGenerated] = useState(false);
-
-  const generatePreviewUrl = (shopifyObject) => {
-    const location = window.location;
-    const href = window.location.href;
-    const search = window.location.search;
-    let url = '';
-    let disablePreviewbar = '&pb=0';
-    let generatedUrl = '';
-
-    if (search && !search.includes('key')) {
-      url = href + '&preview_theme_id=';
-    } else if (search.includes('key')) {
-      url = location.origin + location.pathname + '?preview_theme_id=';
-    } else {
-      url = href + '?preview_theme_id=';
-    }
-
-    if (settings.disablePreviewbar) {
-      generatedUrl = url + shopifyObject.theme.id + disablePreviewbar;
-      navigator.clipboard.writeText(generatedUrl);
-    } else {
-      generatedUrl = url + shopifyObject.theme.id;
-      navigator.clipboard.writeText(generatedUrl);
-    }
-  };
+  const { settings, previewHistory, setPreviewHistory } = useContext(Store);
 
   const onClickButtonHandler = () => {
     if (shopify) {
-      generatePreviewUrl(shopify);
       setUrlGenerated(true);
     }
   };
+
+  useEffect(() => {
+    if (urlGenerated) {
+      generatePreviewUrl(shopify, settings);
+      setPreviewHistory(
+        generateHistoryObject(
+          shopify,
+          previewHistory,
+          generatePreviewUrl(shopify, settings)
+        )
+      );
+    }
+  }, [urlGenerated]);
 
   return (
     <div

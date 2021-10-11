@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Store from '../store/initialStore';
 import cN from 'classnames';
 
 const WidgetHeader = () => {
-  const { activeTab, setActiveTab } = useContext(Store);
+  const { activeTab, setActiveTab, previewHistory } = useContext(Store);
+
+  useEffect(() => {}, [previewHistory]);
 
   return (
     <div className="WidgetHeader">
@@ -16,10 +18,11 @@ const WidgetHeader = () => {
         <div className="Tab__Content">Generator</div>
       </div>
       <div
-        className={cN('WidgetHeader__tab WidgetHeader__Disabled', {
-          active: activeTab === 'history',
+        className={cN('WidgetHeader__tab', {
+          active: activeTab === 'previewHistory',
+          WidgetHeader__Disabled: previewHistory.length < 1,
         })}
-        onClick={() => setActiveTab('history')}
+        onClick={() => setActiveTab('previewHistory')}
       >
         <div className="Tab__Content">History</div>
       </div>
