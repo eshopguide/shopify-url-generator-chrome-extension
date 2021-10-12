@@ -68,6 +68,7 @@ var options = {
             },
           },
         ],
+        exclude: [path.join(__dirname, 'src', 'pages', 'Widget', 'Widget.css')],
       },
       {
         test: new RegExp('.(' + fileExtensions.join('|') + ')$'),
@@ -94,6 +95,11 @@ var options = {
           },
         ],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        use: 'raw-loader',
+        include: [path.join(__dirname, 'src', 'pages', 'Widget', 'Widget.css')],
       },
     ],
   },

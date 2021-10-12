@@ -3,9 +3,13 @@ import Store from '../store/initialStore';
 import cN from 'classnames';
 
 const WidgetHeader = () => {
-  const { activeTab, setActiveTab, previewHistory } = useContext(Store);
+  const { activeTab, setActiveTab, history } = useContext(Store);
 
-  useEffect(() => {}, [previewHistory]);
+  useEffect(() => {
+    if (activeTab === 'history' && history.length < 1) {
+      setActiveTab('generator');
+    }
+  }, [history]);
 
   return (
     <div className="WidgetHeader">
@@ -19,10 +23,10 @@ const WidgetHeader = () => {
       </div>
       <div
         className={cN('WidgetHeader__tab', {
-          active: activeTab === 'previewHistory',
-          WidgetHeader__Disabled: previewHistory.length < 1,
+          active: activeTab === 'history',
+          WidgetHeader__Disabled: history.length < 1,
         })}
-        onClick={() => setActiveTab('previewHistory')}
+        onClick={() => setActiveTab('history')}
       >
         <div className="Tab__Content">History</div>
       </div>

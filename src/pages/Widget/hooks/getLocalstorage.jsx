@@ -4,13 +4,8 @@ import setLocalStorage from './setLocalStorage';
 
 const getLocalstorage = () => {
   const storeValue = useContext(Store);
-  const {
-    activeTab,
-    setActiveTab,
-    settings,
-    previewHistory,
-    setPreviewHistory,
-  } = useContext(Store);
+  const { activeTab, setActiveTab, settings, history, setHistory } =
+    useContext(Store);
 
   useEffect(() => {
     function useCopyOfLocalstorage() {
@@ -20,7 +15,7 @@ const getLocalstorage = () => {
 
       setActiveTab(storeDataObject.activeTab);
       settings.setDisablePreviewbar(storeDataObject.settings.disablePreviewbar);
-      setPreviewHistory(storeDataObject.previewHistory);
+      setHistory(storeDataObject.history);
     }
 
     if (localStorage.getItem('storeDataObject')) {
@@ -34,7 +29,7 @@ const getLocalstorage = () => {
 
   useEffect(() => {
     setLocalStorage(storeValue);
-  }, [activeTab, settings, previewHistory]);
+  }, [activeTab, settings, history]);
 };
 
 export default getLocalstorage;

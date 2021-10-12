@@ -7,8 +7,8 @@ const defaultStore = {
     disablePreviewbar: false,
     setDisablePreviewbar: () => {},
   },
-  previewHistory: [],
-  setPreviewHistory: () => {},
+  history: [],
+  setHistory: () => {},
 };
 
 const Store = React.createContext(defaultStore);

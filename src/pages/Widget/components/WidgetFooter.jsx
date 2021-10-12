@@ -4,7 +4,7 @@ const WidgetFooter = () => {
   return (
     <div className="WidgetFooter">
       <div>
-        made with 💕 from&nbsp;
+        made with 💕 by&nbsp;
         <a
           className="WidgetFooter__Link"
           href="https://www.eshop-guide.de/"

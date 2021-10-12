@@ -3,7 +3,7 @@ import { useState } from 'react';
 const useStore = () => {
   const [activeTab, setActiveTab] = useState('generator');
   const [disablePreviewbar, setDisablePreviewbar] = useState(false);
-  const [previewHistory, setPreviewHistory] = useState([]);
+  const [history, setHistory] = useState([]);
 
   return {
     activeTab: activeTab,
@@ -12,8 +12,8 @@ const useStore = () => {
       disablePreviewbar: disablePreviewbar,
       setDisablePreviewbar: setDisablePreviewbar,
     },
-    previewHistory: previewHistory,
-    setPreviewHistory: setPreviewHistory,
+    history: history,
+    setHistory: setHistory,
   };
 };
 

@@ -9,7 +9,7 @@ const WidgetContent = () => {
   return (
     <div className="WidgetContent">
       {activeTab === 'generator' && <WidgetUrlGenerator />}
-      {activeTab === 'previewHistory' && <WidgetHistory />}
+      {activeTab === 'history' && <WidgetHistory />}
       {activeTab === 'settings' && <WidgetSettings />}
     </div>
   );

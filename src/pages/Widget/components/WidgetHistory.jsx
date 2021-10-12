@@ -4,20 +4,19 @@ import lodash from 'lodash';
 import WidgetHistoryListItems from './WidgetHistoryListItems';
 
 const WidgetHistory = () => {
-  const { previewHistory, setPreviewHistory } = useContext(Store);
+  const { history, setHistory } = useContext(Store);
   const [historyGroupByShop, setHistoryGroupByShop] = useState(
-    lodash.groupBy(previewHistory, 'shop')
+    lodash.groupBy(history, 'shop')
   );
 
   const onItemClick = useCallback((url) => () => {
-    const removeIndex = previewHistory.findIndex((item) => item.url === url);
-    previewHistory.splice(removeIndex, 1);
-    setHistoryGroupByShop(lodash.groupBy(previewHistory, 'shop'));
+    let historyArr = history;
+    historyArr = historyArr.filter((item) => item.url !== url);
+    setHistoryGroupByShop(lodash.groupBy(historyArr, 'shop'));
+    setHistory(historyArr);
   });
 
-  useEffect(() => {
-    setPreviewHistory(previewHistory);
-  }, [historyGroupByShop]);
+  useEffect(() => {}, [historyGroupByShop]);
 
   return (
     <div className="WidgetHistory">
@@ -34,6 +33,7 @@ const WidgetHistory = () => {
 
                 return (
                   <WidgetHistoryListItems
+                    key={themeKey}
                     themeKeys={themeKeys}
                     themeKey={themeKey}
                     themeIndex={themeKey + themeIndex}

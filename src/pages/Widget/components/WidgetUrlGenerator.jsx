@@ -7,7 +7,7 @@ import Store from '../store/initialStore';
 const WidgetUrlGenerator = () => {
   const shopify = window.Shopify;
   const [urlGenerated, setUrlGenerated] = useState(false);
-  const { settings, previewHistory, setPreviewHistory } = useContext(Store);
+  const { settings, history, setHistory } = useContext(Store);
 
   const onClickButtonHandler = () => {
     if (shopify) {
@@ -18,10 +18,10 @@ const WidgetUrlGenerator = () => {
   useEffect(() => {
     if (urlGenerated) {
       generatePreviewUrl(shopify, settings);
-      setPreviewHistory(
+      setHistory(
         generateHistoryObject(
           shopify,
-          previewHistory,
+          history,
           generatePreviewUrl(shopify, settings)
         )
       );
