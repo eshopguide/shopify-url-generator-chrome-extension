@@ -21,12 +21,14 @@ const WidgetContainer = () => {
           'WidgetContainer--Open': openWidget,
         })}
       >
-        <div
-          onClick={() => setOpenWidget(!openWidget)}
-          className="WidgetContainer__Opener"
-        >
-          <div className="WidgetContainer__Arrow">
-            <HiOutlineChevronLeft />
+        <div className="WidgetContainer__Opener-Container">
+          <div
+            onClick={() => setOpenWidget(!openWidget)}
+            className="WidgetContainer__Opener"
+          >
+            <div className="WidgetContainer__Arrow">
+              <HiOutlineChevronLeft />
+            </div>
           </div>
         </div>
         <div className="WidgetContainer__Wrapper">
