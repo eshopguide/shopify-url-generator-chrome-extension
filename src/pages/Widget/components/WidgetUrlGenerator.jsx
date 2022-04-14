@@ -9,23 +9,22 @@ const WidgetUrlGenerator = () => {
   const [urlGenerated, setUrlGenerated] = useState(false);
   const { settings, history, setHistory } = useContext(Store);
 
-  const onClickButtonHandler = () => {
+  const onClickButtonHandler = (type) => {
     if (shopify) {
       setUrlGenerated(true);
-    }
-  };
 
-  useEffect(() => {
-    if (urlGenerated) {
-      generatePreviewUrl(shopify, settings);
+      generatePreviewUrl(shopify, settings, type);
       setHistory(
         generateHistoryObject(
           shopify,
           history,
-          generatePreviewUrl(shopify, settings)
+          generatePreviewUrl(shopify, settings, type)
         )
       );
     }
+  };
+
+  useEffect(() => {
   }, [urlGenerated]);
 
   return (
@@ -47,24 +46,32 @@ const WidgetUrlGenerator = () => {
           <div className="WidgetUrlGenerator__Headline">
             We're ready, how about you?
           </div>
-          <div
-            onClick={() => onClickButtonHandler()}
-            className="WidgetUrlGenerator__Button"
-          >
-            Get The Preview Link
+          <div className='WidgetUrlGenerator__Buttons'>
+            <div
+              onClick={() => onClickButtonHandler("preview")}
+              className="WidgetUrlGenerator__Button"
+            >
+              Preview Link
+            </div>
+            <div
+              onClick={() => onClickButtonHandler("editor")}
+              className="WidgetUrlGenerator__Button"
+            >
+              Editor Link
+            </div>
           </div>
         </div>
         <div className="WidgetUrlGenerator__Response">
           <div className="WidgetUrlGenerator__Headline">
             <div>
-              Preview Link for {shopify.theme.name} copied to your clipboard.
+              Link for {shopify.theme.name} copied to your clipboard.
             </div>
           </div>
           <div
             onClick={() => setUrlGenerated(false)}
             className="WidgetUrlGenerator__Button"
           >
-            New Preview Link
+            Generate new links
           </div>
         </div>
       </>

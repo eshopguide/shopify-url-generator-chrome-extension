@@ -1,4 +1,4 @@
-const generatePreviewUrl = (shopifyObject, settings) => {
+const generatePreviewUrl = (shopifyObject, settings, type) => {
   const location = window.location;
   const href = window.location.href;
   const search = window.location.search;
@@ -15,12 +15,18 @@ const generatePreviewUrl = (shopifyObject, settings) => {
     url = href + '?preview_theme_id=';
   }
 
-  if (settings.disablePreviewbar) {
-    generatedUrl = url + shopifyObject.theme.id + disablePreviewbar;
-    navigator.clipboard.writeText(generatedUrl);
-    return generatedUrl;
-  } else {
-    generatedUrl = url + shopifyObject.theme.id;
+  if (type === "preview") {
+    if (settings.disablePreviewbar) {
+      generatedUrl = url + shopifyObject.theme.id + disablePreviewbar;
+      navigator.clipboard.writeText(generatedUrl);
+      return generatedUrl;
+    } else {
+      generatedUrl = url + shopifyObject.theme.id;
+      navigator.clipboard.writeText(generatedUrl);
+      return generatedUrl;
+    }
+  } else if (type === "editor") {
+    generatedUrl = 'https://' + shopifyObject.shop + '/admin/themes/' + shopifyObject.theme.id + '/editor';
     navigator.clipboard.writeText(generatedUrl);
     return generatedUrl;
   }
