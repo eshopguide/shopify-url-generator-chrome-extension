@@ -26,9 +26,15 @@ const generatePreviewUrl = (shopifyObject, settings, type) => {
       return generatedUrl;
     }
   } else if (type === "editor") {
-    generatedUrl = 'https://' + shopifyObject.shop + '/admin/themes/' + shopifyObject.theme.id + '/editor';
-    navigator.clipboard.writeText(generatedUrl);
-    return generatedUrl;
+    if (settings.disablePreviewbar) {
+      generatedUrl = url + shopifyObject.theme.id + disablePreviewbar;
+      navigator.clipboard.writeText(generatedUrl);
+    } else {
+      generatedUrl = url + shopifyObject.theme.id;
+      navigator.clipboard.writeText(generatedUrl);
+    }
+    const editorGeneratedUrl = 'https://' + shopifyObject.shop + '/admin/themes/' + shopifyObject.theme.id + '/editor';
+    return navigator.clipboard.writeText(`Theme Name: ${shopifyObject.theme.name}\nPreview Link: ${generatedUrl}\nEditor Link: ${editorGeneratedUrl}`);
   }
 };
 
