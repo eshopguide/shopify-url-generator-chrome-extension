@@ -1,6 +1,6 @@
 {
   "name": "shopify-url-generator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Create effortless Previewlinks for Shopify from the Frontend of your Browser",
   "license": "MIT",
   "repository": {

@@ -57,7 +57,7 @@ const WidgetUrlGenerator = () => {
               onClick={() => onClickButtonHandler("editor")}
               className="WidgetUrlGenerator__Button"
             >
-              Editor Link
+              Preview + Editor Link
             </div>
           </div>
         </div>
